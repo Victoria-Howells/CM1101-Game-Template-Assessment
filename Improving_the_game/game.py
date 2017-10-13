@@ -359,11 +359,14 @@ def move(exits, direction):
 
 
 def check_victory_conditions():
-    if current_room["items"] == [item_biscuits] and current_room["name"] == rooms["Tutor"]["name"]:
-        print("You win")
-        return True
-    else:
-        return False
+    # victory condition: leave biscuits for tutor
+    if current_room["name"] == rooms["Tutor"]["name"]:
+        for item in current_room["items"]:
+            if item == item_biscuits:
+                print("You win")
+                return True
+            
+    return False  
 
 # This is the entry point of our program
 def main():
